@@ -42,7 +42,7 @@ export const useTaskStore = create((set, get) => ({
     set({ isLoading: true });
     try {
       const response = await axiosInstance.get(
-        `/auth/task?searchTerm=${searchTerm}`
+        `/auth/task/search?searchTerm=${searchTerm}`
       );
       const { tasks, message } = await response.data;
       set({ tasks });

@@ -13,10 +13,9 @@ const router = Router();
 
 router.route("/auth/tasks").get(protectRoute, getTasks);
 
-router
-  .route("/auth/task")
-  .get(protectRoute, searchtask)
-  .post(protectRoute, createTask);
+router.route("/auth/task/search").get(protectRoute, searchtask);
+
+router.route("/auth/task").post(protectRoute, createTask);
 
 router
   .route("/auth/task/:taskId")
@@ -25,3 +24,4 @@ router
   .delete(protectRoute, deleteTask);
 
 export default router;
+

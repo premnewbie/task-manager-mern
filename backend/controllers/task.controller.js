@@ -105,7 +105,7 @@ export const deleteTask = async (req, res) => {
   const { taskId } = req.params;
   const user = req.user;
   try {
-    const userHasAccess = await Task.findOne({ user: user._id });
+    const userHasAccess = await Task.findOne({ _id: taskId, user: user._id });
     if (!userHasAccess) {
       return res.status(401).json({
         success: false,
@@ -113,14 +113,14 @@ export const deleteTask = async (req, res) => {
           "UnAuthorized - You do not have the permission to delete the task",
       });
     }
-    const taskToDelete = await Task.deleteOne({ _id: taskId });
-    if (!taskToDelete) {
+    
+    const result = await Task.deleteOne({ _id: taskId });
+    
+    if (result.deletedCount === 0) {
       return res
         .status(404)
         .json({ success: false, message: "Task Not Found" });
     }
-
-    await Task.deleteOne({ taskId });
 
     res
       .status(200)
