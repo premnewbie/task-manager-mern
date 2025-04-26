@@ -6,11 +6,11 @@ import taskRoutes from "./routes/task.routes.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
-import  "./lib/TaskScheduler.js";
+import "./lib/TaskScheduler.js";
 
 dotenv.config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -18,12 +18,18 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
+
+if (process.env.NODE_ENV === "production") {
+  app.use(cors({
+    origin: true,
+    credentials: true,
+  }));
+} else {
+  app.use(cors({
     origin: "http://localhost:5173",
     credentials: true,
-  })
-);
+  }));
+}
 
 app.use("/api", userRoutes);
 app.use("/api", taskRoutes);

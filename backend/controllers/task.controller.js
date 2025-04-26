@@ -182,24 +182,18 @@ export const searchtask = async (req, res) => {
 
   try {
     const searchTerm = req.query.searchTerm || "";
+    console.log("Search term:", searchTerm);
 
     const tasks = await Task.find({
       user: user._id,
       title: { $regex: searchTerm, $options: "i" },
     }).sort({ createdAt: -1 });
 
-    if (tasks.length === 0 && searchTerm !== "") {
-      return res.status(200).json({
-        success: true,
-        message: "No task is found for the given search term",
-        tasks: [],
-      });
-    }
-
     return res.status(200).json({
       success: true,
       tasks: tasks,
-      message: "Successfully fetched the tasks",
+      count: tasks.length,
+      message: tasks.length > 0 ? "Successfully fetched the tasks" : "No tasks found for the given search term",
     });
   } catch (error) {
     console.log(

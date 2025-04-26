@@ -17,11 +17,8 @@ router.route("/auth/task/search").get(protectRoute, searchtask);
 
 router.route("/auth/task").post(protectRoute, createTask);
 
-router
-  .route("/auth/task/:taskId")
-  .get(protectRoute, getTask)
-  .put(protectRoute, updateTask)
-  .delete(protectRoute, deleteTask);
+router.route("/auth/task/:taskId").get(protectRoute, getTask);
+router.route("/auth/task/:taskId").put(protectRoute, updateTask);
+router.route("/auth/task/:taskId").delete(protectRoute, deleteTask);
 
 export default router;
-
