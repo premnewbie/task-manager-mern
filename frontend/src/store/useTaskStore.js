@@ -13,7 +13,7 @@ export const useTaskStore = create((set, get) => ({
     try {
       const {title,description,category,status,dueDate} = {...formData};
       
-      const response = await axiosInstance.post(`/auth/task`, {
+      const response = await axiosInstance.post(`/auth/task-create`, {
         title,
         description,
         category,
@@ -28,7 +28,7 @@ export const useTaskStore = create((set, get) => ({
 
       set({
         task: newTask,
-        tasks: [...currentTasks, newTask], // push new task to the array
+        tasks: [...currentTasks, newTask], 
       });
     } catch (error) {
       console.log("Error from create task function in taskStore",error);
@@ -42,7 +42,7 @@ export const useTaskStore = create((set, get) => ({
     set({ isLoading: true });
 
     try {
-      const response = await axiosInstance.put(`/auth/task/${taskId}`, {
+      const response = await axiosInstance.put(`/auth/task-update/${taskId}`, {
         taskData
       });
       const { task, message } = await response.data;
@@ -78,7 +78,7 @@ export const useTaskStore = create((set, get) => ({
   getTask: async (taskId) => {
     set({ isLoading: true });
     try {
-      const response = await axiosInstance.get(`/auth/task/${taskId}`);
+      const response = await axiosInstance.get(`/auth/task-get/${taskId}`);
       const { task } = await response.data;
       set({ task: task[0] });
     } catch (error) {
@@ -92,7 +92,7 @@ export const useTaskStore = create((set, get) => ({
   deleteTask: async (taskId) => {
     set({ isLoading: true });
     try {
-      const response = await axiosInstance.delete(`/auth/task/${taskId}`);
+      const response = await axiosInstance.delete(`/auth/task-delete/${taskId}`);
       const { message } = await response.data;
       const taskArr = get().tasks.filter((task) => task._id !== taskId);
       set({ tasks: taskArr });
