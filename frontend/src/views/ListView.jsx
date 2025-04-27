@@ -19,7 +19,7 @@ function ListView() {
   };
 
   return (
-    <div className="sm:w-[90%] w-full mx-auto">
+    <div className="w-[90%] md:w-full mx-auto">
       <div className="grid grid-cols-3 md:grid-cols-5 font-semibold text-gray-700 p-2 gap-2 md:gap-0">
         <h3 className="text-sm md:text-md">Task Name</h3>
         <h3 className="text-sm md:text-md">Due On</h3>
