@@ -5,7 +5,7 @@ import simplifiedRoutes from "./routes/simplified.routes.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
-import "./lib/TaskScheduler.js";
+// import "./lib/TaskScheduler.js";
 
 dotenv.config();
 
@@ -32,10 +32,10 @@ if (process.env.NODE_ENV === "production") {
 app.use("/api", simplifiedRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend")));
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
   
   app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "frontend", "index.html"));
+    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
   });
 }
 
