@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
   app.use(cors({
-    origin: true,
+    origin: 'https://task-manager-mern-3v41.onrender.com',
     credentials: true,
   }));
 } else {
