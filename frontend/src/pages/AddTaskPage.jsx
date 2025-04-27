@@ -23,11 +23,11 @@ function AddTaskPage() {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if(PastDate(formData.dueDate)){
       toast.error("Due Date must be future date")
       return;
-    }
-    e.preventDefault();
+    }    
     console.log("Form submitted")
     createTask(formData);
     navigate("/");

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const formatDateForInput = (dateString) => {
   if (!dateString) return "";
   const date = new Date(dateString);
-  return date.toISOString().split("T")[0]; // Gets YYYY-MM-DD part only
+  return date.toISOString().split("T")[0]; 
 };
 
 function UpdateTaskPage() {

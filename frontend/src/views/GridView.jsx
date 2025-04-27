@@ -12,7 +12,7 @@ function GridView() {
   return (
     <div className="grid grid-cols-2 max-sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4  gap-5">
         {tasks?.map(task => (
-            <TaskCard task={task} showStatus={true} />
+            <TaskCard task={task} key={task._id} showStatus={true} />
         ))}
     </div>
   );
