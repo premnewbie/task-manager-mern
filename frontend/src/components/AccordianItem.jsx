@@ -21,7 +21,7 @@ const AccordianItem = ({ title, color = "bg-blue-300", tasks }) => {
     <div className="mb-4">
       <button
         onClick={toggleAccordion}
-        className={`w-full font-bold text-left ${color} py-2 px-4 rounded-lg focus:outline-none flex justify-between`}
+        className={`w-[90%] md:w-full font-bold text-left ${color} py-2 px-2 md:px-4 rounded-lg focus:outline-none flex justify-between`}
       >
         <p>{title}</p>
         <span>
@@ -66,14 +66,14 @@ const AccordianItem = ({ title, color = "bg-blue-300", tasks }) => {
               className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-0 bg-gray-100 p-4 rounded-lg mt-2 relative"
             >
               <p
-                className={`col-span-1 text-sm md:text-md font-semibold ${
+                className={`col-span-1 max-sm:truncate text-sm md:text-md font-semibold ${
                   title == "Completed" ? "line-through" : ""
                 }`}
               >
                 {task.title}
               </p>
 
-              <p className="text-sm md:text-md font-semibold">
+              <p className="text-sm md:text-md max-sm:truncate font-semibold">
                 {formatDate(task.dueDate)}
               </p>
               <p className="text-sm md:text-md hidden md:block font-semibold">{task.status}</p>
