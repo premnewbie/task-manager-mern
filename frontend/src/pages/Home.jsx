@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Search from "../components/Search";
 import BoardView from "../views/BoardView";
 import GridView from "../views/GridView";
 import { MdAddCircleOutline } from "react-icons/md";
@@ -16,7 +15,6 @@ function Home() {
 
   return (
     <div className="m-2">
-      <Search />
       <div className="flex gap-5 md:gap-0 justify-between my-4 mx-5">
         <button
           className="flex justify-center items-center gap-1 bg-blue-500 text-white font-semibold p-2 rounded-md"

@@ -5,7 +5,7 @@ import simplifiedRoutes from "./routes/simplified.routes.js";
 import cookieParser from "cookie-parser";
 import path from "path";
 import cors from "cors";
-// import "./lib/TaskScheduler.js";
+import "./lib/TaskScheduler.js";
 
 dotenv.config();
 

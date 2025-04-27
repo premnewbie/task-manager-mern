@@ -38,23 +38,6 @@ export const useTaskStore = create((set, get) => ({
     }
   },
 
-  searchTask: async (searchTerm) => {
-    set({ isLoading: true });
-    try {
-      const response = await axiosInstance.get(
-        `/auth/task/search?searchTerm=${searchTerm}`
-      );
-      const { tasks, message } = await response.data;
-      set({ tasks });
-      toast.success(message);
-    } catch (error) {
-      console.log("Error from search task function in taskStore");
-      toast.error(error.response.data.message);
-    } finally {
-      set({ isLoading: false });
-    }
-  },
-
   updateTask: async (taskData,taskId) => {
     set({ isLoading: true });
 
