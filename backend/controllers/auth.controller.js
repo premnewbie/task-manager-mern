@@ -92,7 +92,7 @@ export const login = async (req, res) => {
     return res.status(200).json({
       success: true,
       user: userToReturn,
-      message: "New User created successfully",
+      message: "Logged in successfully",
     });
   } catch (error) {
     console.log("Error from login function in auth controller", error.message);
