@@ -1,4 +1,3 @@
-// backend/routes/simplified.routes.js
 import express from "express";
 import { protectRoute } from "../middlewares/auth.middleware.js";
 import { getTasks, createTask, getTask, updateTask, deleteTask } from "../controllers/task.controller.js";

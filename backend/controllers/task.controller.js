@@ -176,32 +176,3 @@ export const getTask = async (req, res) => {
       .json({ success: false, message: "Internal Server Error" });
   }
 };
-
-export const searchtask = async (req, res) => {
-  const { user } = req;
-
-  try {
-    const searchTerm = req.query.searchTerm || "";
-    console.log("Search term:", searchTerm);
-
-    const tasks = await Task.find({
-      user: user._id,
-      title: { $regex: searchTerm, $options: "i" },
-    }).sort({ createdAt: -1 });
-
-    return res.status(200).json({
-      success: true,
-      tasks: tasks,
-      count: tasks.length,
-      message: tasks.length > 0 ? "Successfully fetched the tasks" : "No tasks found for the given search term",
-    });
-  } catch (error) {
-    console.log(
-      "Error from the search tasks function in task controller",
-      error.message
-    );
-    return res
-      .status(500)
-      .json({ success: false, message: "Internal Server Error" });
-  }
-};
