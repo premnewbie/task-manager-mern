@@ -21,7 +21,7 @@ const AccordianItem = ({ title, color = "bg-blue-300", tasks }) => {
     <div className="mb-4">
       <button
         onClick={toggleAccordion}
-        className={`w-[90%] md:w-full font-bold text-left ${color} py-2 px-2 md:px-4 rounded-lg focus:outline-none flex justify-between`}
+        className={`w-full font-bold text-left ${color} py-2 px-2 md:px-4 rounded-lg focus:outline-none flex justify-between`}
       >
         <p>{title}</p>
         <span>
@@ -79,7 +79,7 @@ const AccordianItem = ({ title, color = "bg-blue-300", tasks }) => {
               <p className="text-sm md:text-md hidden md:block font-semibold">{task.status}</p>
               <p className="text-sm md:text-md hidden md:block font-semibold">{task.category}</p>
               <div className="text-sm md:text-md flex justify-start gap-1 md:gap-5">
-                <button className="text-white bg-black p-2 text-sm font-semibold cursor-pointer">
+                <button className="text-white bg-black p-1 md:p-2 text-sm font-semibold cursor-pointer">
                   <Link to={`/updatetask/${task._id}`} className="flex gap-1">
                     <MdEdit size={20} />
                     <span className="hidden md:block">Edit</span>
