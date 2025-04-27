@@ -34,7 +34,7 @@ app.use("/api", simplifiedRoutes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
   
-  app.get("/*", function(req, res) {
+  app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
   });
 }
