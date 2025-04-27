@@ -16,7 +16,7 @@ function TasksContainer({ heading, tasks }) {
     e.preventDefault();
 
     if (PastDate(dragItem.dueDate) && heading.toLowerCase() !== "completed") {
-      toast.error("Due date has been crossed for the task to move")
+      toast.error("Due date has been crossed for the task to move");
       return;
     }
     if (heading.toLowerCase() === "pending") return;
@@ -33,12 +33,19 @@ function TasksContainer({ heading, tasks }) {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      <h3 className="p-2 text-xl text-center font-semibold">{heading}</h3>
-      <div className="p-2">
-        {tasks.map((task) => (
+      <h3 className="p-2 text-xl text-center font-bold">{heading}</h3>
+      {tasks && tasks.length > 0 && (
+        <div className="p-2">
+          {tasks.map((task) => (
           <TaskCard key={task._id} task={task} />
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
+      {tasks && tasks.length === 0 && (
+        <div className="h-[80%] flex justify-center items-center font-semibold text-red-500">
+          <h5>No task</h5>
+        </div>
+      )}
     </div>
   );
 }

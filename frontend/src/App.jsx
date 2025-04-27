@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="p-2 bg-gray-200 min-h-screen">
-      <h1 className="text-3xl font-extrabold text-center">Task Manager</h1>
+      <h1 className="text-4xl font-extrabold text-center">Task Manager</h1>
       <Toaster />
       <Routes>
         <Route
